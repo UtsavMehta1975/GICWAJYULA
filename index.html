@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUPSPGICWAJYULA</title>
+    <base target="_self">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@preline/preline@2.0.0/dist/preline.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #1a5f9c; /* Government blue */
+            --secondary: #ff9933; /* Saffron accent */
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            background-color: #ffffff;
+            color: #333333;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-image {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/wajulapics/IMG-20250530-WA0011.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mobile-menu {
+            transition: all 0.3s ease;
+            max-height: 0;
+            overflow: hidden;
+        }
+        
+        .mobile-menu.open {
+            max-height: 500px;
+        }
+        
+        .news-card:hover .news-title {
+            color: var(--primary);
+        }
+        
+        /* Custom styles for the two navbars */
+        .top-nav {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .main-nav {
+            background-color: var(--primary);
+        }
+        
+        .nav-link {
+            color: white;
+            padding: 1rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-center {
+            display: flex;
+            justify-content: center;
+        }
+        
+        /* Government theme elements */
+        .govt-accent {
+            border-left: 4px solid var(--secondary);
+            padding-left: 1rem;
+        }
+        
+        .govt-badge {
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .school-logo {
+            height: 50px;
+            width: auto;
+        }
+        
+        .active-tab {
+            background-color: rgba(255, 255, 255, 0.2);
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .school-logo {
+                height: 40px;
+            }
+            
+            .school-name {
+                font-size: 1.1rem;
+            }
+            
+            .nav-link {
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation Bar (School Logo and Name) -->
+    <nav class="top-nav py-3 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between">
+                <div class="logo-container">
+                    <!-- School Logo - Replace with actual logo -->
+                    <img src="https://gis.eregistrationukgov.in/gisportal/img/logo.png" 
+                         alt="School Logo" 
+                         class="school-logo">
+                    <h1 class="school-name text-xl md:text-2xl font-bold text-gray-800">
+                        ATAL UTKRISHT PADAM SINGH PARIHAR- GIC WAJULA<br>
+                        <span class="text-sm font-normal">(Garur Bageshwar, Uttrakhand)</span>
+                    </h1>
+                </div>
+                <div class="hidden md:block">
+                    <span class="govt-badge">Government of India</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Navigation Bar (Blue with tabs) -->
+    <nav class="main-nav shadow-md sticky top-20 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-blue-700 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex nav-center space-x-1">
+                    <a href="#home" class="nav-link active-tab">Home</a>
+                    <a href="#certificates" class="nav-link">Certificates</a>
+                    <a href="#admission" class="nav-link">Admission Form</a>
+                    <a href="#disclosure" class="nav-link">Public Disclosure</a>
+                    <a href="#about" class="nav-link">About Us</a>
+                    <a href="#contact" class="nav-link">Contact Us</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="mobile-menu bg-blue-800 md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-white hover:bg-blue-700">Home</a>
+                <a href="#certificates" class="block px-3 py-2 rounded-md text-white hover:bg-blue-700">Certificates</a>
+                <a href="#admission" class="block px-3 py-2 rounded-md text-white hover:bg-blue-700">Admission Form</a>
+                <a href="#disclosure" class="block px-3 py-2 rounded-md text-white hover:bg-blue-700">Public Disclosure</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-white hover:bg-blue-700">About Us</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-white hover:bg-blue-700">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="hero-image flex items-center justify-center text-center text-white">
+        <div class="px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">AUPSP - GIC Wjyula में आपका स्वागत है!</h1>
+            <p class="text-xl md:text-2xl mb-8">An institution of excellence under Ministry of Education</p>
+            <a href="#about" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">About Us</a>
+        </div>
+    </section>
+     <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Principal Card (Sticky) -->
+                <div class="principal-card md:col-span-1">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-200">
+                        <div class="text-center mb-4">
+                            <img src="/wajulapics/IMG-20250531-WA0043.jpg" 
+                                 alt="Principal" 
+                                 class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-blue-500">
+                        </div>
+                        <h3 class="text-xl font-bold text-center text-gray-800">Shre Deepak Arya</h3>
+                        <p class="text-blue-600 text-center font-medium mb-4">Principal</p>
+                        <p class="text-gray-600 text-sm text-center">
+                            "शिक्षा सबसे शक्तिशाली हथियार है जिसका उपयोग आप दुनिया को बदलने के लिए कर सकते हैं।."
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Main Content Area -->
+                <div class="md:col-span-3">
+                    <!-- Info Buttons -->
+                    <div class="grid md:grid-cols-3 gap-6 mb-12">
+                        <!-- Staff Button -->
+                        <div class="info-button bg-blue-600 text-white p-6 rounded-lg text-center" onclick="location.href='#staff-content'">
+                            <div class="text-4xl mb-4">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Our Staff</h3>
+                            <p class="text-blue-100">Meet our dedicated teaching faculty</p>
+                        </div>
+                        
+                        <!-- Enrollment Button -->
+                        <div class="info-button bg-green-600 text-white p-6 rounded-lg text-center" onclick="location.href='#enrollment-content'">
+                            <div class="text-4xl mb-4">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Enrollment</h3>
+                            <p class="text-green-100">Student enrollment statistics</p>
+                        </div>
+                        
+                        <!-- Portfolio Button -->
+                        <div class="info-button bg-orange-600 text-white p-6 rounded-lg text-center" onclick="location.href='#portfolio-content'">
+                            <div class="text-4xl mb-4">
+                                <i class="fas fa-school"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">School Portfolio</h3>
+                            <p class="text-orange-100">Key information about our school</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Info Contents -->
+                    <div class="space-y-8">
+                        <!-- Staff Content -->
+                       <div id="staff-content" class="info-content bg-blue-50 p-6 rounded-lg text-center">
+    <h3 class="text-2xl font-bold mb-4 text-blue-800">Our Teaching Staff</h3>
+    <ul class="space-y-2 text-left w-full">
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Shre Deepak Arya - (Principal Incharge) Hindi Lecturer</span>
+    </li>
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Shre Mohan Ram - Lecturer Geography</span>
+    </li>
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Shre Rajiv Kumar Mishra - Lecturer Maths</span>
+    </li>
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Shre Alok Pandey - Lecturer Physics</span>
+    </li>
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Shre Chandan Singh Negi - Lecturer Political Science</span>
+    </li>
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Pooja Tamta - Lecturer English</span>
+    </li>
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Smt Vijayshree Pant - Lecturer</span>
+    </li>
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Vinita Mehra - Lecturer Sanskrit</span>
+    </li>
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Smt Megha Koranga - Lecturer Biology</span>
+    </li>
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Asha Rana - Lecturer Economics</span>
+    </li>
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Shivbaran Rajput - TGT Lt. Social Studies</span>
+    </li>
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Kishan Singh Rana - TGT Lt. Social Studies</span>
+    </li>
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Shree Sukhdev Lal - TGT Lt. English</span>
+    </li>
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Smt Poonam Bisht - TGT Lt. English</span>
+    </li>
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Shre Harish Farshwan - TGT Lt. Social Studies</span>
+    </li>
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Shre Prakash Bhat - TGT Lt. Physical Education</span>
+    </li>
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Shre Kamal Singh Bisht - TGT Maths</span>
+    </li>
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Shre Lalit Mohan Joshi - TGT Hindi</span>
+    </li>
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Chandrawati Devi - TGT Science</span>
+    </li>
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Smt Rajeshwari - TGT Art</span>
+    </li>
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Smt Himani Joshi - TGT Maths</span>
+    </li>
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Smt Bhagwati Bora - TGT Hindi</span>
+    </li>
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Shre Manoj Kumar Tamta - TGT Commerce</span>
+    </li>
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Smt Munni Goshwami - TGT Hindi</span>
+    </li>
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Shre Bhuvan Chandra Joshi - Sr. Administrative Officer</span>
+    </li>
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Shre Mukesh Shahi - Jr. Assistant</span>
+    </li>
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Shre Kailash Prashad - Peon</span>
+    </li>
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Shre Lalit Mohan Mamgai - Peon</span>
+    </li>
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Shre Arjun Singh - Cleaner</span>
+    </li>
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Shre Narendra Karki - Lab Assistant</span>
+    </li>
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Shre Pramod Yadav - Special Children Teacher</span>
+    </li>
+    <li class="border-b border-blue-100 pb-2">
+        <span class="font-medium">Utsav Mehta - VT(IT/ITES)</span>
+    </li>
+</ul>
+
+</div>
+
+                        
+                        <!-- Enrollment Content -->
+                        <div id="enrollment-content" class="info-content bg-green-50 p-6 rounded-lg">
+                            <h3 class="text-2xl font-bold mb-4 text-green-800">Student Enrollment</h3>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <h4 class="font-bold text-green-700 mb-2">Current Enrollment</h4>
+                                    <div class="bg-white p-4 rounded shadow-sm">
+                                        <div class="flex justify-between items-center mb-2">
+                                            <span>Total Students:</span>
+                                            <span class="font-bold text-green-600">275</span>
+                                        </div>
+                                        <div class="flex justify-between items-center mb-2">
+                                            <span>Boys:</span>
+                                            <span class="font-bold text-green-600">132</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span>Girls:</span>
+                                            <span class="font-bold text-green-600">143</span>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded shadow-sm mt-4">
+                                        <h5 class="font-bold text-green-600 mb-2">Class-wise Distribution</h5>
+                                        <div class="space-y-2">
+                                            <div class="flex justify-between">
+                                                <span>Middle (6-8):</span>
+                                                <span>87</span>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <span>Secondary (9-10):</span>
+                                                <span>129</span>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <span>Higher Secondary (11-12):</span>
+                                                <span>59</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-green-700 mb-2">Academic Performance</h4>
+                                    <div class="space-y-4">
+                                        <div class="bg-white p-4 rounded shadow-sm">
+                                            <h5 class="font-bold text-green-600">Board Results (2023)</h5>
+                                            <p class="text-sm">Class 10: 98.2% pass percentage</p>
+                                            <p class="text-sm">Class 12: 96.5% pass percentage</p>
+                                        </div>
+                                        <div class="bg-white p-4 rounded shadow-sm">
+                                            <h5 class="font-bold text-green-600">Scholarships</h5>
+                                            <p class="text-sm">125 students receiving government scholarships</p>
+                                        </div>
+                                        <div class="bg-white p-4 rounded shadow-sm">
+                                            <h5 class="font-bold text-green-600">Special Achievements</h5>
+                                            <p class="text-sm">15 students selected for national level competitions</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Portfolio Content -->
+                        <div id="portfolio-content" class="info-content bg-orange-50 p-6 rounded-lg">
+                            <h3 class="text-2xl font-bold mb-4 text-orange-800">School Portfolio</h3>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <h4 class="font-bold text-orange-700 mb-2">Key Information</h4>
+                                    <div class="space-y-3">
+                                        <div>
+                                            <h5 class="font-semibold">Established:</h5>
+                                            <p>1945</p>
+                                        </div>
+                                        <div>
+                                            <h5 class="font-semibold">Affiliation:</h5>
+                                            <p>CBSE, New Delhi (Affiliation No. 3520145)</p>
+                                        </div>
+                                        <div>
+                                            <h5 class="font-semibold">Campus Area:</h5>
+                                            <p>250 नाली with playground and gardens</p>
+                                        </div>
+                                        <div>
+                                            <h5 class="font-semibold">Infrastructure:</h5>
+                                            <p>35 classrooms, 5 labs, library, auditorium</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-orange-700 mb-2">Achievements</h4>
+                                    <div class="space-y-3">
+                                        <div>
+                                            <h5 class="font-semibold">Awards:</h5>
+                                            <p>Best Government School Award (State Level) - 2022</p>
+                                        </div>
+                                        <div>
+                                            <h5 class="font-semibold">Rankings:</h5>
+                                            <p>Ranked #3 among government schools in the state</p>
+                                        </div>
+                                        <div>
+                                            <h5 class="font-semibold">Special Programs:</h5>
+                                            <p>Smart Classroom Initiative, Digital Literacy Program</p>
+                                        </div>
+                                        <div>
+                                            <h5 class="font-semibold">Partnerships:</h5>
+                                            <p>Samagra Siksha Abhiyan And Atal vidhyalaya</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- School Education Department Article -->
+                    <div class="mt-12 bg-gray-50 p-6 rounded-lg border border-gray-200">
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800 govt-accent">From the School Education Department</h3>
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="md:col-span-2">
+                                <p class="text-gray-600 mb-4">
+                                    GIC-Wajyula operates under the guidance of the State Education Department, 
+                                    committed to providing quality education to all sections of society. Our school follows 
+                                    the National Education Policy 2020 framework, focusing on holistic development of students.
+                                </p>
+                                <p class="text-gray-600 mb-4">
+                                    The school has been recognized as a "Atal Utkrisht" by the Ministry of Education for its 
+                                    innovative teaching methods and excellent academic performance. We are proud to maintain 
+                                    a 100% track record of compliance with all government education standards and regulations.
+                                </p>
+                                <p class="text-gray-600">
+                                    Our infrastructure development projects are supported by the Samagra Shiksha Abhiyan, 
+                                    ensuring that students have access to modern facilities including smart classrooms, 
+                                    computer labs, and a well-stocked library.
+                                </p>
+                            </div>
+                            <div class="flex items-center justify-center">
+                                <img src="https://static.india.com/wp-content/uploads/2022/06/UK-Board-10th-12th-Result-2022.jpg" 
+                                     alt="Education Department" 
+                                     class="h-32 object-contain">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900">Certificates</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800 govt-accent">School Certificates</h3>
+                    <p class="text-gray-600 mb-4">
+                        View and download important school certificates and documents. All documents are available in PDF format.
+                    </p>
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-blue-600 mb-2">Recognition Certificate</h4>
+                            <p class="text-sm text-gray-600 mb-2">Certificate of recognition from CBSE</p>
+                            <a href="#" class="text-blue-500 hover:underline text-sm">Download PDF</a>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-blue-600 mb-2">Affiliation Certificate</h4>
+                            <p class="text-sm text-gray-600 mb-2">Certificate of affiliation with CBSE</p>
+                            <a href="#" class="text-blue-500 hover:underline text-sm">Download PDF</a>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-blue-600 mb-2">NOC Certificate</h4>
+                            <p class="text-sm text-gray-600 mb-2">No Objection Certificate from State Government</p>
+                            <a href="#" class="text-blue-500 hover:underline text-sm">Download PDF</a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800 govt-accent">Student Certificates</h3>
+                    <p class="text-gray-600 mb-4">
+                        Important certificates for students and parents. Click to download the required documents.
+                    </p>
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-blue-600 mb-2">Bonafide Certificate</h4>
+                            <p class="text-sm text-gray-600 mb-2">Certificate for student verification</p>
+                            <a href="#" class="text-blue-500 hover:underline text-sm">Download PDF</a>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-blue-600 mb-2">TC Certificate</h4>
+                            <p class="text-sm text-gray-600 mb-2">Transfer Certificate application form</p>
+                            <a href="#" class="text-blue-500 hover:underline text-sm">Download PDF</a>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-blue-600 mb-2">Character Certificate</h4>
+                            <p class="text-sm text-gray-600 mb-2">Character certificate for students</p>
+                            <a href="#" class="text-blue-500 hover:underline text-sm">Download PDF</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admission Form Section -->
+    <section id="admission" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900">Admission Form</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-6 text-gray-800 govt-accent">Admission Process</h3>
+                <p class="text-gray-600 mb-6">
+                    Please fill out the admission form below to apply for admission to AUPSP GIC Wajyula . 
+                    All fields are mandatory.
+                </p>
+                
+                <form id="admissionForm" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="studentName" class="block text-sm font-medium text-gray-700 mb-1">Student Name</label>
+                            <input type="text" id="studentName" name="studentName" required 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="fatherName" class="block text-sm font-medium text-gray-700 mb-1">Father's Name</label>
+                            <input type="text" id="fatherName" name="fatherName" required 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="motherName" class="block text-sm font-medium text-gray-700 mb-1">Mother's Name</label>
+                            <input type="text" id="motherName" name="motherName" required 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="dob" class="block text-sm font-medium text-gray-700 mb-1">Date of Birth</label>
+                            <input type="date" id="dob" name="dob" required 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="class" class="block text-sm font-medium text-gray-700 mb-1">Class Applying For</label>
+                            <select id="class" name="class" required 
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                                <option value="">Select Class</option>
+                                <option value="1">Class 1</option>
+                                <option value="2">Class 2</option>
+                                <option value="3">Class 3</option>
+                                <option value="4">Class 4</option>
+                                <option value="5">Class 5</option>
+                                <option value="6">Class 6</option>
+                                <option value="7">Class 7</option>
+                                <option value="8">Class 8</option>
+                                <option value="9">Class 9</option>
+                                <option value="10">Class 10</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Address</label>
+                        <textarea id="address" name="address" rows="3" required 
+                                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"></textarea>
+                    </div>
+                    
+                    <div>
+                        <label for="previousSchool" class="block text-sm font-medium text-gray-700 mb-1">Previous School (if any)</label>
+                        <input type="text" id="previousSchool" name="previousSchool" 
+                               class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <input type="checkbox" id="terms" name="terms" required 
+                               class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                        <label for="terms" class="ml-2 block text-sm text-gray-700">
+                            I agree to the <a href="#" class="text-blue-600 hover:underline">terms and conditions</a>
+                        </label>
+                    </div>
+                    
+                    <div>
+                        <button type="submit" 
+                                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-md transition duration-300">
+                            Submit Application
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Public Disclosure Section -->
+    <section id="disclosure" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900">Public Disclosure</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800 govt-accent">School Information</h3>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-bold text-gray-700">School Name</h4>
+                                <p class="text-gray-600">Government Inter Collage, Wajyula Bageshwar</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-700">Address</h4>
+                                <p class="text-gray-600">Wjyula- Garur, Bageshwar Uttrakhand India , 263635</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-700">Year of Establishment</h4>
+                                <p class="text-gray-600">1965</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-700">Affiliation Number</h4>
+                                <p class="text-gray-600">CBSE/3520145/2024</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-700">School Udise Code</h4>
+                                <p class="text-gray-600">05080306503</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800 govt-accent">Staff Information</h3>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-bold text-gray-700">Principal</h4>
+                                <p class="text-gray-600">Shre Deepak Arya</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-700">Total Teachers</h4>
+                                <p class="text-gray-600">26</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-700">Non-Teaching Staff</h4>
+                                <p class="text-gray-600">7</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-700">Student-Teacher Ratio</h4>
+                                <p class="text-gray-600">11:1</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8">
+                <h3 class="text-2xl font-semibold mb-4 text-gray-800 govt-accent">Financial Information</h3>
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-bold text-gray-700">Annual Budget</h4>
+                            <p class="text-gray-600">₹ 10,00,000</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-700">Government Grants</h4>
+                            <p class="text-gray-600">₹ 10,00,000</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-700">Fee Structure</h4>
+                            <p class="text-gray-600">As per CBSE guidelines</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-700">Scholarships</h4>
+                            <p class="text-gray-600">Available for eligible students</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900">About Us</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800 govt-accent">Our History</h3>
+                    <p class="text-gray-600 mb-4">
+                        Established in 1965, AUPSP GIC WAJULA has been a beacon of quality education in the region. Our school was founded with the vision to provide affordable, high-quality education to students from all backgrounds.
+                    </p>
+                    <p class="text-gray-600 mb-4">
+                        Over the years, we have grown from a small school with 50 students to a premier educational institution with over 1,200 students and 60 staff members.
+                    </p>
+                    <p class="text-gray-600">
+                        Our alumni have gone on to excel in various fields including medicine, engineering, civil services, arts, and sports.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800 govt-accent">Our Mission</h3>
+                    <p class="text-gray-600 mb-4">
+                        Our mission is to provide a stimulating learning environment that promotes academic excellence, creativity, and character development.
+                    </p>
+                    <p class="text-gray-600 mb-4">
+                        We aim to nurture students to become responsible citizens who contribute positively to society while upholding the values of integrity, respect, and compassion.
+                    </p>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800 govt-accent">Our Vision</h3>
+                    <p class="text-gray-600">
+                        To be recognized as a center of excellence in education that empowers students to achieve their full potential and become leaders in their chosen fields.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mt-12">
+                <h3 class="text-2xl font-semibold mb-4 text-gray-800 govt-accent">Our Facilities</h3>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <div class="text-blue-500 mb-2">
+                            <i class="fas fa-flask text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-700 mb-2">Science Labs</h4>
+                        <p class="text-gray-600 text-sm">Well-equipped physics, chemistry and biology laboratories</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <div class="text-blue-500 mb-2">
+                            <i class="fas fa-book text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-700 mb-2">Library</h4>
+                        <p class="text-gray-600 text-sm">10,000+ books and digital resources</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <div class="text-blue-500 mb-2">
+                            <i class="fas fa-laptop text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-700 mb-2">Computer Lab</h4>
+                        <p class="text-gray-600 text-sm">State-of-the-art computer lab with 20+ computers</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <div class="text-blue-500 mb-2">
+                            <i class="fas fa-running text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-700 mb-2">Sports</h4>
+                        <p class="text-gray-600 text-sm">Cricket, Football, Badminton and athletics facilities</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <div class="text-blue-500 mb-2">
+                            <i class="fas fa-music text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-700 mb-2">Arts & Music</h4>
+                        <p class="text-gray-600 text-sm">Dedicated spaces for visual and performing arts</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <div class="text-blue-500 mb-2">
+                            <i class="fa-solid fa-utensils" style="color: rgb(0, 204, 255); font-size: 24px;"></i>
+
+                        </div>
+                        <h4 class="font-bold text-gray-700 mb-2">Mid Day Meal</h4>
+                        <p class="text-gray-600 text-sm">Tasty And Healthy MDM is being provided to students.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900">Contact Us</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-xl font-semibold mb-6 text-gray-800 govt-accent">Get In Touch</h3>
+                    <form id="contactForm" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                            <input type="text" id="name" name="name" required 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                            <input type="email" id="email" name="email" required 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                            <input type="text" id="subject" name="subject" required 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                            <textarea id="message" name="message" rows="4" required 
+                                      class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" 
+                                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-md transition duration-300">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-6 text-gray-800 govt-accent">Our Information</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 text-blue-600 mt-1">
+                                <i class="fas fa-map-marker-alt text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium text-gray-800">Address</h4>
+                                <p class="text-gray-600">AUPSP GIC Wajyula Garur Bageshwar Uttrakhand 263635</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 text-blue-600 mt-1">
+                                <i class="fas fa-phone-alt text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium text-gray-800">Phone</h4>
+                                <p class="text-gray-600">+91 9675957791</p>
+                                <p class="text-gray-600">Mon-Sat, Summer - 7:30 AM - 1:00 PM, Winter 9:00 AM - 3:30 PM</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 text-blue-600 mt-1">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium text-gray-800">Email</h4>
+                                <p class="text-gray-600">prinwajula@gmail.com</p>
+                                <p class="text-gray-600"></p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 text-blue-600 mt-1">
+                                <i class="fas fa-clock text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium text-gray-800">Working Hours</h4>
+                                <p class="text-gray-600">Monday to Friday: 8:00 AM - 4:00 PM</p>
+                                <p class="text-gray-600">Saturday: 8:00 AM - 1:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+    <h3 class="text-xl font-semibold mb-4 text-gray-800 govt-accent">Location Map</h3>
+    <div class="bg-gray-200 h-64 rounded-lg flex items-center justify-center">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1222.2653298995433!2d79.62386066416212!3d29.948135431620432!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39a745804f3ed5e5%3A0x7ae92fb4978c75aa!2sAUPSP%20Government%20Inter%20College%2C%20Wajula!5e0!3m2!1sen!2sus!4v1749017006015!5m2!1sen!2sus" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy">
+        </iframe>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <div class="logo-container mb-4">
+                        <img src="https://www.results.shiksha/images/UBSE-Logo.jpg" 
+                             alt="School Logo" 
+                             class="school-logo">
+                        <h3 class="text-lg font-semibold">AUPSP GIC Wajyula Bageshwar</h3>
+                    </div>
+                    <p class="text-gray-400">
+                        A Government of India recognized institution providing quality education since 1965.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="#certificates" class="text-gray-400 hover:text-white transition duration-300">Certificates</a></li>
+                        <li><a href="#admission" class="text-gray-400 hover:text-white transition duration-300">Admission Form</a></li>
+                        <li><a href="#disclosure" class="text-gray-400 hover:text-white transition duration-300">Public Disclosure</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition duration-300">About Us</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition duration-300">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Government Portals</h3>
+                    <ul class="space-y-2">
+                        <li><a href="https://www.education.gov.in/" class="text-gray-400 hover:text-white transition duration-300">Ministry of Education</a></li>
+                        <li><a href="https://www.cbse.gov.in/" class="text-gray-400 hover:text-white transition duration-300">CBSE</a></li>
+                        <li><a href="https://dsel.education.gov.in/" class="text-gray-400 hover:text-white transition duration-300">Department of School Education</a></li>
+                        <li><a href="https://www.mygov.in/" class="text-gray-400 hover:text-white transition duration-300">MyGov</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-12 pt-8 border-t border-gray-700">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">
+                        &copy; 2025 AUPSP GIC WAJYULA . All rights reserved.
+                    </p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('open');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all nav links
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active-tab');
+                });
+                
+                // Add active class to clicked nav link
+                if (this.classList.contains('nav-link')) {
+                    this.classList.add('active-tab');
+                }
+                
+                // Scroll to target
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Form submission handling
+        document.getElementById('admissionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Admission form submitted successfully! We will contact you soon.');
+            this.reset();
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Your message has been sent successfully! We will get back to you soon.');
+            this.reset();
+        });
+
+        // Highlight active section in navigation
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active-tab');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active-tab');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
