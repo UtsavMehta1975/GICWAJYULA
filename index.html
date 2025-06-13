@@ -11,9 +11,9 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
-        :root {
-            --primary: #1a5f9c; /* Government blue */
-            --secondary: #ff9933; /* Saffron accent */
+          :root {
+            --primary: #1a5f9c;
+            --secondary: #ff9933;
         }
         
         body {
@@ -24,13 +24,147 @@
             scroll-behavior: smooth;
         }
         
-        .hero-image {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/wajulapics/IMG-20250530-WA0011.jpg');
-            background-size: cover;
-            background-position: center;
+        /* New Slideshow Styles */
+        .slideshow-container {
+            position: relative;
+            width: 100%;
             height: 60vh;
+            overflow: hidden;
         }
         
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .slide.active {
+            opacity: 1;
+        }
+        
+        .slide-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            padding: 2rem;
+            color: white;
+        }
+        
+        .slide-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        
+        .slide-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .slide-dot.active {
+            background-color: white;
+            transform: scale(1.2);
+        }
+        
+        .slide-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 1rem;
+            cursor: pointer;
+            z-index: 10;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .slide-button:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+        
+        .slide-prev {
+            left: 20px;
+        }
+        
+        .slide-next {
+            right: 20px;
+        }
+        
+        .slide-links {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            z-index: 5;
+            width: 80%;
+        }
+        
+        .slide-link {
+            background-color: rgba(255,255,255,0.9);
+            color: var(--primary);
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            text-align: center;
+            min-width: 120px;
+        }
+        
+        .slide-link:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .slideshow-container {
+                height: 70vh;
+            }
+            
+            .slide-links {
+                top: 60%;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .slide-link {
+                width: 80%;
+                padding: 10px 15px;
+            }
+            
+            .slide-button {
+                width: 40px;
+                height: 40px;
+                padding: 0.5rem;
+            }
+        }
         .card-hover:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -123,6 +257,51 @@
             }
         }
     </style>
+    <style>
+        /* Previous styles remain the same */
+        
+        /* Go to Top Button Styles */
+        .go-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .go-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .go-to-top:hover {
+            background-color: var(--secondary);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .go-to-top {
+                width: 40px;
+                height: 40px;
+                bottom: 20px;
+                left: 20px;
+            }
+        }
+    </style>
+    
 </head>
 <body>
     <!-- Top Navigation Bar (School Logo and Name) -->
@@ -181,18 +360,228 @@
             </div>
         </div>
     </nav>
+    <section id="home" class="hero-image flex items-center justify-center text-center text-white relative">
+    <!-- About Us Button Positioned Above Slideshow -->
+   <div style="position: absolute; top: 75vh; width: 100%; text-align: center; z-index: 10;">
+    <a href="#about" style="display: inline-block; background-color: #1e3a8a; color: white; 
+                           font-weight: bold; padding: 12px 24px; border-radius: 8px; 
+                           transition: 0.3s;">
+        About Us
+    </a>
+</div>
 
-    <!-- Home Section -->
-    <section id="home" class="hero-image flex items-center justify-center text-center text-white">
-        <div class="px-4 sm:px-6 lg:px-8">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">AUPSP - GIC Wjyula में आपका स्वागत है!</h1>
-            <p class="text-xl md:text-2xl mb-8">An institution of excellence under Ministry of Education</p>
-            <a href="#about" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">About Us</a>
+     <!-- Slideshow Section (Replacing Hero Image) -->
+    <div class="slideshow-container" id="home">
+        <!-- Slide 1 -->
+        <div class="slide active" style="background-image: url('./WhatsApp Image 2025-05-24 at 09.28.04_46d5b415.jpg');">
+            <div class="slide-content">
+                <h2 class="text-3xl md:text-4xl font-bold mb-2">Excellence in Education</h2>
+                <p class="text-lg md:text-xl">Providing quality education since 1985</p>
+            </div>
         </div>
-    </section>
+        
+        <!-- Slide 2 -->
+        <div class="slide" style="background-image: url('./infrascture.jpg');">
+            <div class="slide-content">
+                <h2 class="text-3xl md:text-4xl font-bold mb-2">Vedic Infrastructure</h2>
+                <p class="text-lg md:text-xl">State-of-the-art facilities for holistic development</p>
+            </div>
+        </div>
+        
+        <!-- Slide 3 -->
+        <div class="slide" style="background-image: url('./experience.jpg');">
+            <div class="slide-content">
+                <h2 class="text-3xl md:text-4xl font-bold mb-2">Experienced Faculty</h2>
+                <p class="text-lg md:text-xl">Dedicated teachers shaping young minds</p>
+            </div>
+        </div>
+        
+        <!-- Slide 4 -->
+        <div class="slide" style="background-image: url('./sports.jpg');">
+            <div class="slide-content">
+                <h2 class="text-3xl md:text-4xl font-bold mb-2">Sports Excellence</h2>
+                <p class="text-lg md:text-xl">Nurturing champions on and off the field</p>
+            </div>
+        </div>
+        
+        <!-- Slide 5 -->
+        <div class="slide" style="background-image: url('./colabpo.jpg');">
+            <div class="slide-content">
+                <h2 class="text-3xl md:text-4xl font-bold mb-2">Teamwork & Collaboration</h2>
+                <p class="text-lg md:text-xl">Learning together for a better tomorrow</p>
+            </div>
+        </div>
+        
+        <!-- Slide 6 -->
+        <div class="slide" style="background-image: url('./CREATIVE\ LEARNINH.jpg');">
+            <div class="slide-content">
+                <h2 class="text-3xl md:text-4xl font-bold mb-2">Creative Learning</h2>
+                <p class="text-lg md:text-xl">Encouraging innovation and creativity</p>
+            </div>
+        </div>
+        
+        <!-- Slide 7 -->
+        <div class="slide" style="background-image: url('./creative.JPG');">
+            <div class="slide-content">
+                <h2 class="text-3xl md:text-4xl font-bold mb-2">Cultural Events</h2>
+                <p class="text-lg md:text-xl">Celebrating diversity and traditions</p>
+            </div>
+        </div>
+        
+        <!-- Slide 8 -->
+        <div class="slide" style="background-image: url('./SCIENCE\ AND\ TECH.jpg');">
+            <div class="slide-content">
+                <h2 class="text-3xl md:text-4xl font-bold mb-2">Science & Technology</h2>
+                <p class="text-lg md:text-xl">Preparing students for the digital future</p>
+            </div>
+        </div>
+        
+        <!-- Slide 9 -->
+        <div class="slide" style="background-image: url('./COMINITYUU.jpg');">
+            <div class="slide-content">
+                <h2 class="text-3xl md:text-4xl font-bold mb-2">Community Engagement</h2>
+                <p class="text-lg md:text-xl">Building bridges with our local community</p>
+            </div>
+        </div>
+        
+        <!-- Slide 10 -->
+        <div class="slide" style="background-image: url('./ALUYMINU\ SUCC.jpg');">
+            <div class="slide-content">
+                <h2 class="text-3xl md:text-4xl font-bold mb-2">Alumni Success</h2>
+                <p class="text-lg md:text-xl">Proud of our students' achievements worldwide</p>
+            </div>
+        </div>
+        </section>
+        <!-- Navigation Buttons -->
+        <button class="slide-button slide-prev">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="slide-button slide-next">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        <!-- Slide Dots -->
+        <div class="slide-nav">
+            <div class="slide-dot active" data-slide="0"></div>
+            <div class="slide-dot" data-slide="1"></div>
+            <div class="slide-dot" data-slide="2"></div>
+            <div class="slide-dot" data-slide="3"></div>
+            <div class="slide-dot" data-slide="4"></div>
+            <div class="slide-dot" data-slide="5"></div>
+            <div class="slide-dot" data-slide="6"></div>
+            <div class="slide-dot" data-slide="7"></div>
+            <div class="slide-dot" data-slide="8"></div>
+            <div class="slide-dot" data-slide="9"></div>
+        </div>
+        
+        <!-- Slide Links -->
+        
+    </div>
+
+    <!-- Rest of your page content -->
+    <div class="container mx-auto px-4 py-12">
+        <!-- Your existing content sections -->
+    </div>
+
+    <script>
+        // Slideshow functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slide-dot');
+        const totalSlides = slides.length;
+        let slideInterval;
+
+        // Initialize slideshow
+        function startSlideshow() {
+            slideInterval = setInterval(nextSlide, 3000); // Change slide every 3 seconds
+        }
+
+        // Go to specific slide
+        function goToSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        // Next slide
+        function nextSlide() {
+            goToSlide(currentSlide + 1);
+        }
+
+        // Previous slide
+        function prevSlide() {
+            goToSlide(currentSlide - 1);
+        }
+
+        // Event listeners
+        document.querySelector('.slide-next').addEventListener('click', () => {
+            clearInterval(slideInterval);
+            nextSlide();
+            startSlideshow();
+        });
+
+        document.querySelector('.slide-prev').addEventListener('click', () => {
+            clearInterval(slideInterval);
+            prevSlide();
+            startSlideshow();
+        });
+
+        // Dot navigation
+        dots.forEach(dot => {
+            dot.addEventListener('click', function() {
+                clearInterval(slideInterval);
+                const slideIndex = parseInt(this.getAttribute('data-slide'));
+                goToSlide(slideIndex);
+                startSlideshow();
+            });
+        });
+
+        
+        // Start the slideshow
+        startSlideshow();
+
+        // Pause on hover
+        const slideshow = document.querySelector('.slideshow-container');
+        slideshow.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+
+        slideshow.addEventListener('mouseleave', () => {
+            startSlideshow();
+        });
+
+        // Navigation handling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#home') {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+    </script>
+
+   
+
      <section class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8">
+                 <div class="grid md:grid-cols-4 gap-8">
                 <!-- Principal Card (Sticky) -->
                 <div class="principal-card md:col-span-1">
                     <div class="bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-200">
@@ -248,19 +637,19 @@
     <h3 class="text-2xl font-bold mb-4 text-blue-800">Our Teaching Staff</h3>
     <ul class="space-y-2 text-left w-full">
     <li class="border-b border-blue-100 pb-2">
-        <span class="font-medium">Shre Deepak Arya - (Principal Incharge) Hindi Lecturer</span>
+        <span class="font-medium">Shri Deepak Arya - (Principal Incharge) Hindi Lecturer</span>
     </li>
     <li class="border-b border-blue-100 pb-2">
-        <span class="font-medium">Shre Mohan Ram - Lecturer Geography</span>
+        <span class="font-medium">Shri Mohan Ram - Lecturer Geography</span>
     </li>
     <li class="border-b border-blue-100 pb-2">
-        <span class="font-medium">Shre Rajiv Kumar Mishra - Lecturer Maths</span>
+        <span class="font-medium">Shri Rajiv Kumar Mishra - Lecturer Maths</span>
     </li>
     <li class="border-b border-blue-100 pb-2">
-        <span class="font-medium">Shre Alok Pandey - Lecturer Physics</span>
+        <span class="font-medium">Shri Alok Pandey - Lecturer Physics</span>
     </li>
     <li class="border-b border-blue-100 pb-2">
-        <span class="font-medium">Shre Chandan Singh Negi - Lecturer Political Science</span>
+        <span class="font-medium">Shri Chandan Singh Negi - Lecturer Political Science</span>
     </li>
     <li class="border-b border-blue-100 pb-2">
         <span class="font-medium">Pooja Tamta - Lecturer English</span>
@@ -272,34 +661,34 @@
         <span class="font-medium">Vinita Mehra - Lecturer Sanskrit</span>
     </li>
     <li class="border-b border-blue-100 pb-2">
-        <span class="font-medium">Smt Megha Koranga - Lecturer Biology</span>
+        <span class="font-medium">Megha Koranga - Lecturer Biology</span>
     </li>
     <li class="border-b border-blue-100 pb-2">
         <span class="font-medium">Asha Rana - Lecturer Economics</span>
     </li>
     <li class="border-b border-blue-100 pb-2">
-        <span class="font-medium">Shivbaran Rajput - TGT Lt. Social Studies</span>
+        <span class="font-medium">Shri Shivbaran Rajput - TGT Lt. Social Studies</span>
     </li>
     <li class="border-b border-blue-100 pb-2">
-        <span class="font-medium">Kishan Singh Rana - TGT Lt. Social Studies</span>
+        <span class="font-medium">Shri Kishan Singh Rana - TGT Lt. Social Studies</span>
     </li>
     <li class="border-b border-blue-100 pb-2">
-        <span class="font-medium">Shree Sukhdev Lal - TGT Lt. English</span>
+        <span class="font-medium">Shri Sukhdev Lal - TGT Lt. English</span>
     </li>
     <li class="border-b border-blue-100 pb-2">
         <span class="font-medium">Smt Poonam Bisht - TGT Lt. English</span>
     </li>
     <li class="border-b border-blue-100 pb-2">
-        <span class="font-medium">Shre Harish Farshwan - TGT Lt. Social Studies</span>
+        <span class="font-medium">Shri Harish Farshwan - TGT Lt. Social Studies</span>
     </li>
     <li class="border-b border-blue-100 pb-2">
-        <span class="font-medium">Shre Prakash Bhat - TGT Lt. Physical Education</span>
+        <span class="font-medium">Shri Prakash Bhat - TGT Lt. Physical Education</span>
     </li>
     <li class="border-b border-blue-100 pb-2">
-        <span class="font-medium">Shre Kamal Singh Bisht - TGT Maths</span>
+        <span class="font-medium">Shri Kamal Singh Bisht - TGT Maths</span>
     </li>
     <li class="border-b border-blue-100 pb-2">
-        <span class="font-medium">Shre Lalit Mohan Joshi - TGT Hindi</span>
+        <span class="font-medium">Shri Lalit Mohan Joshi - TGT Hindi</span>
     </li>
     <li class="border-b border-blue-100 pb-2">
         <span class="font-medium">Chandrawati Devi - TGT Science</span>
@@ -945,7 +1334,36 @@
                         A Government of India recognized institution providing quality education since 1965.
                     </p>
                 </div>
-                
+                <body class="bg-white text-gray-800 font-sans">
+    <!-- Previous body content remains the same until before the closing body tag -->
+    
+    <!-- Go to Top Button -->
+    <div class="go-to-top" id="goToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Previous JavaScript remains the same
+        
+        // Go to Top Button Functionality
+        const goToTopButton = document.getElementById('goToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                goToTopButton.classList.add('visible');
+            } else {
+                goToTopButton.classList.remove('visible');
+            }
+        });
+        
+        goToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
                     <ul class="space-y-2">
